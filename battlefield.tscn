@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=3 uid="uid://c4lmahgcijwnt"]
+
+[ext_resource type="Script" path="res://battlefield.gd" id="1_oqfmm"]
+[ext_resource type="PackedScene" uid="uid://c88y7l0rojpl5" path="res://gun.tscn" id="2_0ntja"]
+[ext_resource type="Texture2D" uid="uid://rxkc7koyfii7" path="res://FP2DShooter Assets/IconsButtons/tile032.png" id="4_ctum3"]
+[ext_resource type="Script" path="res://Interface.gd" id="5_dpkuw"]
+[ext_resource type="Texture2D" uid="uid://ettbet7vngvd" path="res://FP2DShooter Assets/IconsButtons/tile034.png" id="5_tcj6s"]
+[ext_resource type="Texture2D" uid="uid://cvx4sitdc5m4l" path="res://FP2DShooter Assets/IconsButtons/tile035.png" id="6_5tl18"]
+[ext_resource type="PackedScene" uid="uid://brfe47qxpyk2h" path="res://bee_hitbox.tscn" id="6_eyeex"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="6_yakjm"]
+[ext_resource type="PackedScene" uid="uid://b840xtmypgw6a" path="res://star.tscn" id="7_0unuh"]
+[ext_resource type="Texture2D" uid="uid://djlbv7xdd23e" path="res://FP2DShooter Assets/focus.png" id="7_7rsxi"]
+[ext_resource type="Script" path="res://Crosshair.gd" id="10_migmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wcro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f7eh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8fqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hu5vi"]
+
+[node name="Battlefield" type="Node2D"]
+script = ExtResource("1_oqfmm")
+
+[node name="Baclground" type="Sprite2D" parent="."]
+
+[node name="SpawnEnemy" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Interface" type="CanvasLayer" parent="."]
+script = ExtResource("5_dpkuw")
+
+[node name="Virtual joystick left" parent="Interface" instance=ExtResource("6_yakjm")]
+offset_left = 63.0
+offset_top = -82.0
+offset_right = 157.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(49, 217)
+rotation = 4.71239
+scale = Vector2(1.08194, 1.74036)
+texture_normal = ExtResource("4_ctum3")
+shape = SubResource("RectangleShape2D_o5yd7")
+passby_press = true
+
+[node name="Right" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(169.368, 182)
+rotation = 1.5708
+scale = Vector2(1.04682, 1.78958)
+texture_normal = ExtResource("4_ctum3")
+shape = SubResource("RectangleShape2D_6wcro")
+passby_press = true
+
+[node name="Up" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(91.3678, 143)
+scale = Vector2(1.125, 1.71875)
+texture_normal = ExtResource("4_ctum3")
+shape = SubResource("RectangleShape2D_8f7eh")
+passby_press = true
+
+[node name="Down" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(126.368, 256)
+rotation = 3.14159
+scale = Vector2(1.12671, 1.7647)
+texture_normal = ExtResource("4_ctum3")
+shape = SubResource("RectangleShape2D_t8fqq")
+passby_press = true
+
+[node name="TopRight" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(125.368, 146)
+scale = Vector2(1.195, 1.195)
+texture_normal = ExtResource("5_tcj6s")
+passby_press = true
+
+[node name="TopLeft" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(93.3678, 185)
+scale = Vector2(-1.17, -1.17)
+texture_normal = ExtResource("6_5tl18")
+passby_press = true
+
+[node name="BottomLeft" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(93.3678, 253)
+scale = Vector2(-1.17, -1.17)
+texture_normal = ExtResource("5_tcj6s")
+passby_press = true
+
+[node name="BottomRight" type="TouchScreenButton" parent="Interface"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.243137)
+position = Vector2(122.368, 213)
+scale = Vector2(1.19, 1.19)
+texture_normal = ExtResource("6_5tl18")
+passby_press = true
+
+[node name="Health" type="Label" parent="Interface"]
+offset_left = 332.0
+offset_top = 5.0
+offset_right = 402.0
+offset_bottom = 31.0
+text = "HEALTH: "
+
+[node name="Score" type="Label" parent="Interface"]
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 66.0
+offset_bottom = 31.0
+text = "Score: "
+
+[node name="Ammo" type="Label" parent="Interface"]
+offset_left = 280.0
+offset_top = 239.0
+offset_right = 340.0
+offset_bottom = 265.0
+text = "Ammo: "
+
+[node name="BeeHitbox" parent="." instance=ExtResource("6_eyeex")]
+
+[node name="Crosshair" type="Area2D" parent="."]
+script = ExtResource("10_migmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Crosshair"]
+position = Vector2(185, 109)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("7_7rsxi")
+
+[node name="CrosshairDamageBox" type="CollisionShape2D" parent="Crosshair"]
+position = Vector2(185, 109)
+shape = SubResource("CircleShape2D_hu5vi")
+
+[node name="Star" parent="." instance=ExtResource("7_0unuh")]
+position = Vector2(243, 207)
+scale = Vector2(0.665, 0.665)
+
+[node name="Gun" parent="." instance=ExtResource("2_0ntja")]
+position = Vector2(363, 146.5)
+scale = Vector2(1.72, 1.64667)
+
+[connection signal="timeout" from="SpawnEnemy" to="." method="_on_spawn_enemy_timeout"]

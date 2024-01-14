@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://b840xtmypgw6a"]
+
+[ext_resource type="Texture2D" uid="uid://bysnnknvtpmpp" path="res://FP2DShooter Assets/Star.png" id="1_7i0ui"]
+[ext_resource type="Script" path="res://star.gd" id="1_bw0w3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cenag"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5lam"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ab2"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcnup"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhtx"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlfy"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv70l"]
+atlas = ExtResource("1_7i0ui")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hsmt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cenag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5lam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ab2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcnup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkhtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejlfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv70l")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihfnk"]
+radius = 28.4429
+
+[node name="Star_hitbox" type="Area2D"]
+script = ExtResource("1_bw0w3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0hsmt")
+animation = &"Default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 3)
+shape = SubResource("CircleShape2D_ihfnk")

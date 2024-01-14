@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwuxi7xi6x68v"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_d614l"]
+[ext_resource type="Texture2D" uid="uid://c5xax2qnqyptt" path="res://FP2DShooter Assets/Buttons/UI_Flat_Button_Large_Lock_01a1.png" id="2_ku81r"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_d614l")
+
+[node name="GameOvertxt" type="Label" parent="."]
+offset_left = 194.0
+offset_top = 71.0
+offset_right = 274.0
+offset_bottom = 97.0
+text = "Gameover"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 106.0
+offset_right = 247.0
+offset_bottom = 132.0
+text = "Score: "
+
+[node name="Restart" type="TouchScreenButton" parent="."]
+position = Vector2(185, 144)
+texture_normal = ExtResource("2_ku81r")
+
+[node name="Menu" type="TouchScreenButton" parent="."]
+position = Vector2(185, 189)
+texture_normal = ExtResource("2_ku81r")
+
+[node name="RestartTxt" type="Label" parent="."]
+offset_left = 202.0
+offset_top = 147.0
+offset_right = 259.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0, 0, 0.0392157, 1)
+text = "Restart"
+
+[node name="MenuTxt" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 192.0
+offset_right = 265.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(0, 0, 0.0392157, 1)
+text = "Menu"

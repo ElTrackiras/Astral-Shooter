@@ -1,0 +1,12 @@
+res://bee_hitbox.tscn
+res://battlefield.tscn
+res://star.tscn
+res://gun.tscn
+res://Intro.tscn
+res://menu.tscn
+res://game_over.tscn
+res://joystick/virtual_joystick.tscn
+res://Crosshair.gd
+res://joystick/virtual_joystick.gd
+res://battlefield.gd
+res://BeeHitbox.gd

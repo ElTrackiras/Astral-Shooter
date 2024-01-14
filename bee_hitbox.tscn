@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://brfe47qxpyk2h"]
+
+[ext_resource type="Script" path="res://BeeHitbox.gd" id="1_v56q4"]
+[ext_resource type="Texture2D" uid="uid://brd6p6q7sdh1s" path="res://FP2DShooter Assets/Small Bee/Fly/Fly-Sheet.png" id="2_syidg"]
+[ext_resource type="AudioStream" uid="uid://c7pcu3ahfmbp4" path="res://FP2DShooter Assets/SoundEffects/wings-of-insects-45540.mp3" id="3_sr40r"]
+[ext_resource type="AudioStream" uid="uid://dp2b6guoo45x5" path="res://FP2DShooter Assets/SoundEffects/pow-90398.mp3" id="3_x6alm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21y0l"]
+atlas = ExtResource("2_syidg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhcmd"]
+atlas = ExtResource("2_syidg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ugm8"]
+atlas = ExtResource("2_syidg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivgdi"]
+atlas = ExtResource("2_syidg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8q5b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21y0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhcmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ugm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivgdi")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmuig"]
+radius = 9.05539
+
+[node name="BeeHitbox" type="Area2D"]
+show_behind_parent = true
+position = Vector2(244, 118)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_v56q4")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e8q5b")
+animation = &"Fly"
+frame_progress = 0.00210978
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.85, 0.85)
+shape = SubResource("CircleShape2D_vmuig")
+
+[node name="GotHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sr40r")
+
+[node name="StarAttacked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_x6alm")
+
+[node name="DeathTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.097
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
